@@ -5,10 +5,24 @@
 let humanScore =0;
 let computerScore =0;
 
-//Limit computers random choices to 3 integers between 1 and 3 (inclusive)
+//Get a random choice from comptuer and convert to a game usable choice
 function getComputerChoice(){
-    let compChoice= Math.floor((Math.random() *3))+1;
-   return compChoice;
+    let compChoice = null;
+    let compNum= Math.floor((Math.random() *3));
+    switch(compNum){
+        case 0:
+            compChoice = "Rock";
+            return compChoice;
+        case 1:
+            compChoice = "Scissors";
+            return compChoice;
+        case 2:
+            compChoice = "Paper";
+            return compChoice
+        default:
+            console.log("There was an error fetching the computer choice");
+            break;
+    }
 }
 
 //Prompt user for their choice and store
@@ -23,14 +37,9 @@ function displayMenu(){
     console.log("*PAPER, *");
     console.log("*SCISSORS! *");
     console.log("**********************");
-    console.log("As you play you will enter 1 for rock, 2 for paper, or 3 for scissors!");
 
 }
 
-function playRound(){
-let userChoice = getHumanChoice();
-let compChoice = getComputerChoice();
-console.log(userChoice);
-console.log(compChoice);
+function playRound(humanChoice, computerChoice){
+
 }
-playRound();
