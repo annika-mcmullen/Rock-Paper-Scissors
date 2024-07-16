@@ -47,6 +47,17 @@ function displayMenu(){
 }
 
 function playRound(playerChoice, computerChoice){
+
+    if(humanScore===5){
+        winOrLossDiv.innerHTML = 'You won the game';
+        computerScore = 0;
+        humanScore = 0;
+    }
+    else if(computerScore ===5){
+        winOrLossDiv.innerHTML = 'The computer won the game!';
+        humanScore = 0;
+        computerScore = 0;
+    }
     if (playerChoice === computerChoice){
         winOrLossDiv.innerText = "It's a tie!";
     }
@@ -62,9 +73,20 @@ function playRound(playerChoice, computerChoice){
                 winOrLossDiv.innerText = "Computer won this round!"
                 computerScore +=1;
         }
+        //control flow that checks for game to be completed and resets scoreboard
+        if(humanScore===5){
+            winOrLossDiv.innerHTML = 'You won the game!';
+            computerScore = 0;
+            humanScore = 0;
+        }
+        else if(computerScore ===5){
+            winOrLossDiv.innerHTML = 'The computer won the game!';
+            humanScore = 0;
+            computerScore = 0;
+        }
         scoreDiv.innerHTML= 'Computer score: '+ computerScore+' Human score: ' + humanScore;
-        return(computerScore, humanScore);
     }
+
 // function playGame(){
 //     displayMenu();
 //     for (i =0; i<5; i++){
