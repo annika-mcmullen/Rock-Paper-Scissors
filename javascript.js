@@ -4,6 +4,7 @@
 //global variables
 let humanScore =0;
 let computerScore =0;
+let playerChoice = null;
 
 //Get a random choice from comptuer and convert to a game usable choice
 function getComputerChoice(){
@@ -86,14 +87,29 @@ function playRound(humanChoice, computerChoice){
         return;
     }
 }
-function playGame(){
-    displayMenu();
-    for (i =0; i<5; i++){
-        humanChoice =  getHumanChoice();
-        compChoice = getComputerChoice();
-        playRound(humanChoice, compChoice);
-    }
-    console.log("Final scores:");
-    console.log(`Computer Score: ${computerScore} \n Player Score: ${humanScore}`);
-}
-playGame();
+// function playGame(){
+//     displayMenu();
+//     for (i =0; i<5; i++){
+//         humanChoice =  getHumanChoice();
+//         compChoice = getComputerChoice();
+//         playRound(humanChoice, compChoice);
+//     }
+//     console.log("Final scores:");
+//     console.log(`Computer Score: ${computerScore} \n Player Score: ${humanScore}`);
+// }
+// playGame();
+
+//select/store the buttons based off their id's
+let rockBtn = document.querySelector('#rock');
+let scissorBtn = document.querySelector('#scissors');
+let paperBtn = document.querySelector('#paper');
+~
+rockBtn.addEventListener('click', (e)=>{
+    playerChoice = "rock";
+});
+scissorBtn.addEventListener('click',(e)=>{
+    playerChoice = "scissors";
+});
+paperBtn.addEventListener('click',(e)=>{
+    playerChoice = "paper";
+});
