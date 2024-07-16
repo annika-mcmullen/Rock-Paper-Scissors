@@ -48,21 +48,22 @@ function displayMenu(){
 
 function playRound(playerChoice, computerChoice){
     if (playerChoice === computerChoice){
-        resultDiv.innerText= "It's a tie!";
+        winOrLossDiv.innerText = "It's a tie!";
     }
     else if((playerChoice === "rock" && computerChoice === "scissors")||
             (playerChoice ==="scissors"&&computerChoice==="paper")||
             (playerChoice==="paper"&& computerChoice==="rock")){
-                resultDiv.innerText="You win this round!";
-                 //console.log("You win this round! Rock beats scissors");
-                return ++humanScore;
+                winOrLossDiv.innerText = "You won this round!";
+                humanScore +=1;
     }
     else if ((playerChoice === "rock" && computerChoice === "paper")||
             (playerChoice === "scissors" && computerChoice === "rock")||
             (playerChoice === "paper" && computerChoice ==="scissors")){
-                console.log("You lost this round!");
-                return ++computerScore;
+                winOrLossDiv.innerText = "Computer won this round!"
+                computerScore +=1;
         }
+        scoreDiv.innerHTML= 'Computer score: '+ computerScore+' Human score: ' + humanScore;
+        return(computerScore, humanScore);
     }
 // function playGame(){
 //     displayMenu();
@@ -102,14 +103,22 @@ paperBtn.addEventListener('click',(e)=>{
     playRound(playerChoice,compChoice);
 });
 
-//Create a div to hold results of each round
+//Create a div to hold score and win/loss result of each round
 let resultDiv = document.createElement('div');
 body.appendChild(resultDiv);
+
+//node to hold the result of each round
+let winOrLossDiv = document.createElement('div');
+resultDiv.appendChild(winOrLossDiv);
+
+//node to hold the current score
+let scoreDiv = document.createElement('div');
+resultDiv.appendChild(scoreDiv);
+
+
 
 //creates a node to display menu and inserts at top of parent node
 let menu = document.createElement('div');
 menu.innerText = "Welcome to Rock Paper Scissors!";
 body.insertBefore(menu, rockBtn);
 
-let score = document.createElement('div');
-resultDiv.appendChild(score);
