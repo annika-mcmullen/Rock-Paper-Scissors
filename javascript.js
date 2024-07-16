@@ -5,10 +5,11 @@
 let humanScore =0;
 let computerScore =0;
 let playerChoice = null;
+let compChoice = null;
 
 //Get a random choice from comptuer and convert to a game usable choice
 function getComputerChoice(){
-    let compChoice = null;
+
     let compNum= Math.floor((Math.random() *3));
     switch(compNum){
         case 0:
@@ -45,48 +46,24 @@ function displayMenu(){
 
 }
 
-function playRound(humanChoice, computerChoice){
-    if (humanChoice === "rock" && computerChoice === "rock"){
-        console.log("It's a tie!");
-        return;
+function playRound(playerChoice, computerChoice){
+    if (playerChoice === computerChoice){
+        resultDiv.innerText= "It's a tie!";
     }
-    else if(humanChoice === "rock" && computerChoice === "scissors"){
-        console.log("You win this round! Rock beats scissors");
-        return ++humanScore;
+    else if((playerChoice === "rock" && computerChoice === "scissors")||
+            (playerChoice ==="scissors"&&computerChoice==="paper")||
+            (playerChoice==="paper"&& computerChoice==="rock")){
+                resultDiv.innerText="You win this round!";
+                 //console.log("You win this round! Rock beats scissors");
+                return ++humanScore;
     }
-    else if (humanChoice === "rock" && computerChoice === "paper"){
-        console.log("You lost this round! Paper beats rock!");
-        return ++computerScore;
+    else if ((playerChoice === "rock" && computerChoice === "paper")||
+            (playerChoice === "scissors" && computerChoice === "rock")||
+            (playerChoice === "paper" && computerChoice ==="scissors")){
+                console.log("You lost this round!");
+                return ++computerScore;
+        }
     }
-    else if (humanChoice === "scissors" && computerChoice === "scissors"){
-        console.log("It's a tie!");
-        return;
-    }
-    else if (humanChoice === "scissors" && computerChoice === "paper"){
-        console.log("You win this round! Scissors beats paper");
-        return ++humanScore;
-    }
-    else if (humanChoice === "scissors" && computerChoice === "rock"){
-        console.log("You lost this round! Rock beats scissors!");
-        return ++computerScore;
-    }
-    else if (humanChoice === "paper" && computerChoice ==="rock"){
-        console.log("You win this round! Paper beats rock!");
-        return ++humanScore;
-    }
-    else if (humanChoice === "paper" && computerChoice ==="paper"){
-        console.log("It's a tie!");
-        return;
-    }
-    else if (humanChoice === "paper" && computerChoice ==="scissors"){
-        console.log("You lost this round! Paper beats scissors!");
-        return ++computerScore;
-    }
-    else{
-        console.log("There was an error scoring this round!");
-        return;
-    }
-}
 // function playGame(){
 //     displayMenu();
 //     for (i =0; i<5; i++){
@@ -98,18 +75,41 @@ function playRound(humanChoice, computerChoice){
 //     console.log(`Computer Score: ${computerScore} \n Player Score: ${humanScore}`);
 // }
 // playGame();
-
 //select/store the buttons based off their id's
 let rockBtn = document.querySelector('#rock');
 let scissorBtn = document.querySelector('#scissors');
 let paperBtn = document.querySelector('#paper');
+
+//select based off tag
+let body = document.querySelector('body');
 ~
 rockBtn.addEventListener('click', (e)=>{
+    //set the players choice, grab updated instance of computers choice
     playerChoice = "rock";
+    compChoice= getComputerChoice();
+    playRound(playerChoice,compChoice);
 });
 scissorBtn.addEventListener('click',(e)=>{
     playerChoice = "scissors";
+    //set the players choice, grab updated instance of computers choice
+    compChoice= getComputerChoice();
+    playRound(playerChoice,compChoice);
 });
 paperBtn.addEventListener('click',(e)=>{
     playerChoice = "paper";
+    //set the players choice, grab updated instance of computers choice
+    compChoice= getComputerChoice();
+    playRound(playerChoice,compChoice);
 });
+
+//Create a div to hold results of each round
+let resultDiv = document.createElement('div');
+body.appendChild(resultDiv);
+
+//creates a node to display menu and inserts at top of parent node
+let menu = document.createElement('div');
+menu.innerText = "Welcome to Rock Paper Scissors!";
+body.insertBefore(menu, rockBtn);
+
+let score = document.createElement('div');
+resultDiv.appendChild(score);
