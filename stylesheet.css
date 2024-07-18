@@ -1,0 +1,49 @@
+body{
+    background: linear-gradient(#33658A, #F1DEDE );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+.welcome{
+    background: linear-gradient(#D1495B,#F1DEDE );
+    width : 36%;
+    height: 37px;
+    padding-top: 1%;
+    margin:auto;
+    min-width: 0;
+    border: 5px solid #33658A;
+    text-align: center;
+    margin-bottom: 10%;
+}
+.flex-container{
+    display: flex;
+    height: 20em;
+    flex-flow:column wrap;
+    justify-content: flex-start;
+}
+.instructions{
+    background: linear-gradient(#F1DEDE, white);
+    border: 1px solid #33658A;
+    /* padding-top: 1%;
+    width: 50%;
+    height: 28px;
+    margin: auto;
+    text-align: center; */
+}
+.btn{
+    background-color: #F1DEDE;
+    border-radius: 8px;
+    padding: 14px 40px;
+    font-weight: bold;
+
+}
+.btn:hover{
+    background-color: #D1495B;
+}
+
+.scoreboard{
+    border: 2px solid #33658A;
+    /* width:30%;
+    height: auto; */
+    background: linear-gradient(#F1DEDE, white);
+}

@@ -37,14 +37,14 @@ function getHumanChoice(){
     return humanChoice
 }
 //Display a a welcome menu
-function displayMenu(){
-    console.log("**********************");
-    console.log("*Welcome to ROCK, *");
-    console.log("*PAPER, *");
-    console.log("*SCISSORS! *");
-    console.log("**********************");
+// function displayMenu(){
+//     console.log("**********************");
+//     console.log("*Welcome to ROCK, *");
+//     console.log("*PAPER, *");
+//     console.log("*SCISSORS! *");
+//     console.log("**********************");
 
-}
+// }
 
 function playRound(playerChoice, computerChoice){
 
@@ -125,22 +125,27 @@ paperBtn.addEventListener('click',(e)=>{
     playRound(playerChoice,compChoice);
 });
 
+let container=document.querySelector(".flex-container");
 //Create a div to hold score and win/loss result of each round
 let resultDiv = document.createElement('div');
-body.appendChild(resultDiv);
+resultDiv.className = "scoreboard";
+resultDiv.textContent = "Scoreboard: ";
+container.appendChild(resultDiv);
 
 //node to hold the result of each round
 let winOrLossDiv = document.createElement('div');
+winOrLossDiv.className="score";
 resultDiv.appendChild(winOrLossDiv);
 
 //node to hold the current score
 let scoreDiv = document.createElement('div');
+scoreDiv.className="score"
 resultDiv.appendChild(scoreDiv);
 
 
 
 //creates a node to display menu and inserts at top of parent node
-let menu = document.createElement('div');
-menu.innerText = "Welcome to Rock Paper Scissors!";
-body.insertBefore(menu, rockBtn);
+// let menu = document.createElement('div');
+// menu.innerText = "Welcome to Rock Paper Scissors!";
+// body.insertBefore(menu, rockBtn);
 
